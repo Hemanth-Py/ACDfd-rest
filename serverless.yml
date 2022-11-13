@@ -26,6 +26,13 @@ provider:
 plugins:
   - serverless-python-requirements
 
+package:
+  individually: true
+  patterns:
+    - "!node_modules/**"
+    - "!requirements.txt"
+    - "!package.json"
+
 functions:
   create_order: ${file(./Resources/create_order.yml)}
   list_all_customers: ${file(./Resources/list_all_customers.yml)}
