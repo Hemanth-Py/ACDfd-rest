@@ -22,4 +22,4 @@ jobs:
           npm install -g serverless
           serverless -v
           sls plugin install -n serverless-python-requirements
-          serverless deploy --region us-east-2 --aws-s3-accelerate --verbose
+          serverless deploy --region eu-west-2 --aws-s3-accelerate --verbose

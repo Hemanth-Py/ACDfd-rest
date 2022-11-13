@@ -32,4 +32,5 @@ functions:
   list_all_menu: ${file(./Resources/list_all_menu.yml)}
   list_all_menu_items: ${file(./Resources/list_all_menu_items.yml)}
   list_all_orders: ${file(./Resources/list_all_orders.yml)}
+  list_all_restaurants: ${file(./Resources/list_all_restaurants.yml)}
 
