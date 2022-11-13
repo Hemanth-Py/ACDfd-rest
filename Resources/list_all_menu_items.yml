@@ -1,0 +1,22 @@
+handler: list_all_menu_items.lambda_handler
+module: list_all_menu_items
+package:
+  patterns:
+    - '!./**'
+    - list_all_menu_items/**
+events:
+  - http:
+      path: /menu_items
+      method: get
+      cors: true
+      private: true
+      integration: lambda
+      request:
+        passThrough: WHEN_NO_MATCH
+        template:
+          application/json: '{
+            "menu_id": $input.params("menu_id")
+            }'
+      response:
+        headers:
+          Access-Control-Allow-Origin: "'*'"

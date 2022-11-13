@@ -1,0 +1,22 @@
+handler: list_all_orders.lambda_handler
+module: list_all_orders
+package:
+  patterns:
+    - '!./**'
+    - list_all_orders/**
+events:
+  - http:
+      path: /orders
+      method: get
+      cors: true
+      private: true
+      integration: lambda
+      request:
+        passThrough: WHEN_NO_MATCH
+        template:
+          application/json: '{
+            "customer_mobile": $input.params("customer_mobile")
+            }'
+      response:
+        headers:
+          Access-Control-Allow-Origin: "'*'"

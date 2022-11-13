@@ -1,0 +1,22 @@
+handler: create_order.lambda_handler
+module: create_order
+package:
+  patterns:
+    - '!./**'
+    - create_order/**
+events:
+  - http:
+      path: /create_order
+      method: post
+      cors: true
+      private: true
+      integration: lambda
+      request:
+        passThrough: WHEN_NO_MATCH
+        template:
+          application/json: '{
+            "body": $input.json("$")
+            }'
+      response:
+        headers:
+          Access-Control-Allow-Origin: "'*'"

@@ -1,0 +1,22 @@
+handler: list_all_customers.lambda_handler
+module: list_all_customers
+package:
+  patterns:
+    - '!./**'
+    - list_all_customers/**
+events:
+  - http:
+      path: /customers
+      method: get
+      cors: true
+      private: true
+      integration: lambda
+      request:
+        passThrough: WHEN_NO_MATCH
+        template:
+          application/json: '{
+            "body": $input.params("$")
+            }'
+      response:
+        headers:
+          Access-Control-Allow-Origin: "'*'"

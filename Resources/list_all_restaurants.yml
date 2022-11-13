@@ -1,0 +1,22 @@
+handler: list_all_restaurants.lambda_handler
+module: list_all_restaurants
+package:
+  patterns:
+    - '!./**'
+    - list_all_restaurants/**
+events:
+  - http:
+      path: /restaurants
+      method: get
+      cors: true
+      private: true
+      integration: lambda
+      request:
+        passThrough: WHEN_NO_MATCH
+        template:
+          application/json: '{
+            "body": $input.params("$")
+            }'
+      response:
+        headers:
+          Access-Control-Allow-Origin: "'*'"
