@@ -13,9 +13,7 @@ events:
       request:
         passThrough: WHEN_NO_MATCH
         template:
-          application/json: '{
-            "body": $input.params("$")
-            }'
+          application/json: ''
       response:
         headers:
           Access-Control-Allow-Origin: "'*'"
