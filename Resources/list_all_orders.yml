@@ -9,7 +9,6 @@ events:
       path: /orders
       method: get
       cors: true
-      private: true
       integration: lambda
       request:
         passThrough: WHEN_NO_MATCH
