@@ -14,7 +14,7 @@ events:
         passThrough: WHEN_NO_MATCH
         template:
           application/json: '{
-            "customer_mobile": $input.params("customer_mobile")
+            "customer_mobile": "$input.params("customer_mobile")"
             }'
       response:
         headers:
