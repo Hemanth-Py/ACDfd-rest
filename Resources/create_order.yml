@@ -15,6 +15,7 @@ events:
         passThrough: WHEN_NO_MATCH
         template:
           application/json: '{
+            "restaurant_id": $input.json("restaurant_id"),
             "body": $input.json("$")
             }'
       response:
